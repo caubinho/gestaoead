@@ -37,7 +37,7 @@
             </thead>
             <tbody>
 
-                @forelse ($users as $item)
+                @forelse ($users as $data)
 
 
 
@@ -51,26 +51,37 @@
                             </div>
                             <div class="ml-3">
                                 <p class="text-gray-900 whitespace-no-wrap">
-                                    {{ $item->name }}
+                                    {{ $data->name }}
                                 </p>
                             </div>
                         </div>
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <p class="text-gray-900 whitespace-no-wrap"> {{ $item->email }}</p>
+                        <p class="text-gray-900 whitespace-no-wrap"> {{ $data->email }}</p>
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-gray-900 whitespace-no-wrap">
-                            {{ $item->created_at }}
+                            {{ $data->created_at }}
                         </p>
                     </td>
                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                        <span
-                            class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                            <span aria-hidden
-                                class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                            <span class="relative">Activo</span>
-                        </span>
+                        <a href="{{ route('users.edit', $data->id)}}">
+                            <span
+                                class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                                <span aria-hidden
+                                    class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+                                <span class="relative">Editar</span>
+                            </span>
+                        </a>
+
+                        <a href="{{ route('users.change.image', $data->id)}}">
+                            <span
+                                class="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
+                                <span aria-hidden
+                                    class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
+                                <span class="relative">Foto</span>
+                            </span>
+                        </a>
                     </td>
                 </tr>
 
