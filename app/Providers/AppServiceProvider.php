@@ -2,9 +2,17 @@
 
 namespace App\Providers;
 
-use App\Repositories\Eloquent\UserRepositories;
-use App\Repositories\UserRepositoryInterface;
+use App\Repositories\Eloquent\{
+    UserRepository
+};
+use App\Repositories\{
+    UserRepositoryInterface
+};
+
+
 use Illuminate\Support\ServiceProvider;
+
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,8 +25,9 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(
             UserRepositoryInterface::class,
-            UserRepository::class
+            UserRepository::class,
         );
+
     }
 
     /**

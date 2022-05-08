@@ -8,9 +8,9 @@ return [
             'icon'  => 'fas fa-tachometer-alt mr-3'
         ],
         [
-            'name'  => 'Listagem',
-            'url'   => '/dashboard/listagem',
-            'icon'  => 'fas fa-align-left mr-3'
+            'name'  => 'Usuários',
+            'url'   => '/dashboard/users',
+            'icon'  => 'fas fa-users mr-3'
         ],
         [
             'name'  => 'Formularios',
