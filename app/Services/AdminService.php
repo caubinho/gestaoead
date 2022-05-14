@@ -2,14 +2,14 @@
 
 namespace App\Services;
 
-use App\Repositories\UserRepositoryInterface;
+use App\Repositories\AdminRepositoryInterface;
 use stdClass;
 
-class UserService
+class AdminService
 {
     private $repository;
 
-    public function __construct(UserRepositoryInterface $repository)
+    public function __construct(AdminRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }

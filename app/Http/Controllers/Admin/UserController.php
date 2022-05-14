@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserStoreUpdate;
+use App\Http\Requests\{
+        StoreImage,
+        UserStoreUpdate
+    };
+use App\Services\UploadFile;
 use Illuminate\Http\Request;
 
 use App\Services\UserService;
@@ -18,18 +22,27 @@ class UserController extends Controller
     }
     public function index(Request $request)
     {
-        $users = $this->service->getAll(
-            filter: $request->get('filter', '')
+        $datos = $this->service->getAll(
+            filter: $request->filter ?? ""
         );
 
 
-        return view('admin.users.index', compact('users'));
+        return view('admin.users.index', compact('datos'));
     }
 
     public function create()
     {
         return view('admin.users.create');
     }
+
+    public function show($id)
+    {
+        if (!$data = $this->service->findById($id))
+            return back();
+
+        return view('admin.users.show', compact('data'));
+    }
+
 
     public function store(UserStoreUpdate $request)
     {
@@ -66,6 +79,13 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
+    public function destroy($id)
+    {
+        $this->service->delete($id);
+
+        return redirect()->route('users.index');
+    }
+
     public function changeImage($id)
     {
         if( !$user = $this->service->findById($id))
@@ -74,9 +94,15 @@ class UserController extends Controller
         return view('admin.users.image', compact('user'));
     }
 
-    public function uploadFile(Request $request)
+    public function uploadFile(StoreImage $request, UploadFile $uploadFile, $id)
     {
-        dd($request->all());
+        $path = $uploadFile->store($request->image, 'users');
+
+        if(!$this->service->update($id, ['image' => $path ])){
+            return back();
+        }
+
+        return redirect()->route('users.index');
     }
 
 

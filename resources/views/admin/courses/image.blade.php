@@ -5,14 +5,14 @@
 @section('content')
 
 <h1 class="text-3xl text-black pb-6">
-    Editar Foto do Usuário <b>{{ $user->name }}</b>
+    Editar Foto do Administrador <b>{{ $admin->name }}</b>
 </h1>
 
                     <div class="flex flex-wrap">
                         <div class="w-full lg:w-1/2 my-6 pr-0 lg:pr-2">
 
                             <div class="leading-loose">
-                                <form action="{{ route('users.update.image', $user->id)}}" method="POST" enctype="multipart/form-data" class="p-10 bg-white rounded">
+                                <form action="{{ route('admin.update.image', $admin->id)}}" method="POST" enctype="multipart/form-data" class="p-10 bg-white rounded">
                                     @include('admin.layouts.__includes.alerts')
                                     @method('PUT')
                                     @csrf

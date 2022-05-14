@@ -2,14 +2,14 @@
 
 namespace App\Services;
 
-use App\Repositories\UserRepositoryInterface;
+use App\Repositories\CourseRepositoryInterface;
 use stdClass;
 
-class UserService
+class CourseService
 {
     private $repository;
 
-    public function __construct(UserRepositoryInterface $repository)
+    public function __construct(CourseRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }
