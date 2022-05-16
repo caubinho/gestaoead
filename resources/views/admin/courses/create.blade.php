@@ -13,7 +13,7 @@
 
                             <div class="leading-loose">
                                 <form class="p-10 bg-white rounded shadow-xl" action="{{ route('courses.store') }}" method="POST" enctype="multipart/form-data">
-                                    @include('admin.courses.__partials.form')
+                                    @include('admin.courses.partials.form')
                                 </form>
                             </div>
                         </div>

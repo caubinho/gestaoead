@@ -1,4 +1,4 @@
-@include('admin.layouts.__includes.alerts')
+@include('admin.layouts.includes.alerts')
 
 @csrf
 <div class="">

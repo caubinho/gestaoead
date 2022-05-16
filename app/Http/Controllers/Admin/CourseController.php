@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CourseStoreUpdate;
 use App\Services\CourseService;
 use App\Services\UploadFile;
 use Illuminate\Http\Request;
@@ -41,9 +42,9 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, UploadFile $uploadFile)
+    public function store(CourseStoreUpdate $request, UploadFile $uploadFile)
     {
-        $data = $request->only(['name']);
+        $data = $request->only(['name', 'description']);
         $data['available'] = isset($request->available);
 
         if($request->image){
@@ -63,7 +64,10 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        //
+        if(!$course = $this->service->findById($id))
+        return back();
+
+        return view('admin.courses.show', compact('course'));
     }
 
     /**
@@ -74,7 +78,10 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        //
+        if(!$course = $this->service->findById($id))
+            return back();
+
+            return view('admin.courses.edit', compact('course'));
     }
 
     /**
@@ -84,9 +91,24 @@ class CourseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, UploadFile $uploadFile, $id)
     {
-        //
+        $data = $request->only(['name', 'description']);
+        $data['available'] = isset($request->available);
+
+        if($request->image){
+            //remote old image
+            $course = $this->service->findById($id);
+            if(!$course && $course->image)
+            {
+                $uploadFile->removeFile($course->image);
+            }
+            $data['image'] = $uploadFile->store($request->image, 'courses');
+        }
+
+        $this->service->update($id, $data);
+
+        return redirect()->route('courses.index');
     }
 
     /**
@@ -97,7 +119,11 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(!$this->service->delete($id))
+            return back();
+
+        return redirect()->route('course.index');
+
     }
 
 }

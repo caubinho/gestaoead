@@ -19,11 +19,11 @@
 
     <body class="bg-gray-100 font-family-karla flex">
 
-        @include('admin.layouts.__partials.sidebar')
+        @include('admin.layouts.partials.sidebar')
 
         <div class="relative w-full flex flex-col h-screen overflow-y-hidden">
 
-           @include('admin.layouts.__partials.header')
+           @include('admin.layouts.partials.header')
 
             <div class="w-full h-screen overflow-x-hidden border-t flex flex-col">
 
@@ -31,7 +31,7 @@
                         @yield('content')
                 </main>
 
-                @include('admin.layouts.__partials.footer')
+                @include('admin.layouts.partials.footer')
 
             </div>
 

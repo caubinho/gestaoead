@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reply_supports');
+        Schema::dropIfExists('reply_support');
     }
 };

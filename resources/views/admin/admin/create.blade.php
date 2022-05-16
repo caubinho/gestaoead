@@ -15,7 +15,7 @@
                                 <form action="{{ route('admin.store')}}" method="POST"class="p-10 bg-white rounded">
                                     @csrf
 
-                                    @include('admin.admin.__partials.form')
+                                    @include('admin.admin.partials.form')
                                 </form>
                             </div>
                         </div>

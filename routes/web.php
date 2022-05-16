@@ -4,14 +4,46 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\{
     AdminController,
+    ReplySupportController,
+    LessonController,
+    ModuleController,
     CourseController,
     UserController,
-    HomeController
+    HomeController,
+    SupportController,
 };
 
 Route::prefix('dashboard')->group(function () {
 
+     /**
+     * Reply Support
+     */
+    Route::post('/supports/{id}/reply', [ReplySupportController::class, 'store'])->name('replies.store');
 
+    /**
+     * Reply Support
+     */
+    Route::post('/supports/{id}/reply', [ReplySupportController::class, 'store'])->name('replies.store');
+
+
+    /**
+     * Routes Supports
+     */
+    Route::get('/supports/{id}', [SupportController::class, 'show'])->name('supports.show');
+     Route::get('/supports', [SupportController::class, 'index']);
+
+    /**
+     * Routes Lessons
+     */
+    Route::resource('/modules/{moduleId}/lessons', LessonController::class);
+
+    /**
+     * Routes Modules
+     */
+     Route::resource(
+        name: '/courses/{courseId}/modules',
+        controller: ModuleController::class
+        );
 
     /**
      * Routes Courses

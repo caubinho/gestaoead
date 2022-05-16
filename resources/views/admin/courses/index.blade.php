@@ -13,7 +13,7 @@
 
 <div class="w-full mt-12">
 
-    @include('admin.layouts.__includes.form-search', ['routerName' => 'courses.index'])
+    @include('admin.layouts.includes.form-search', ['routerName' => 'courses.index'])
 
     <div class="bg-white overflow-auto">
         <table class="min-w-full leading-normal">

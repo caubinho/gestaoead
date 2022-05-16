@@ -21,6 +21,11 @@ return [
             'name'  => 'Cursos',
             'url'   =>  '/dashboard/courses',
             'icon'  => ' fas fa-video mr-3'
+        ],
+        [
+            'name'  => 'Dúvidas',
+            'url'   =>  '/dashboard/supports',
+            'icon'  => ' fas fa-headset mr-3'
         ]
     ]
 ];

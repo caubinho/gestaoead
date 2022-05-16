@@ -13,7 +13,7 @@
 
                             <div class="leading-loose">
                                 <form action="{{ route('users.update.image', $user->id)}}" method="POST" enctype="multipart/form-data" class="p-10 bg-white rounded">
-                                    @include('admin.layouts.__includes.alerts')
+                                    @include('admin.layouts.includes.alerts')
                                     @method('PUT')
                                     @csrf
 

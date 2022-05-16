@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 
 class UserStoreUpdate extends FormRequest
 {
@@ -26,14 +28,30 @@ class UserStoreUpdate extends FormRequest
 
         $rules = [
             'name' => ['required', 'string', 'min:3', 'max:255'],
-            'email' => ['required', 'string', 'email', 'min:3', 'max:255', "unique:users"],
+            'email' => ['required', 'string', 'email', 'min:3', 'max:255', Rule::unique('users')->ignore($this->admin)],
+            'password' =>[
+                'required',
+                Password::min(8)
+                ->mixedCase()
+                ->letters()
+                ->numbers()
+                ->symbols()
+                ->uncompromised()
+            ],
             'password' => 'required|min:8|max:16|string',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ];
 
         if($this->method() === 'PUT'){
-            $rules['password'] = ['nullable', 'string', 'min:8', 'max:16'];
-            $rules['email'] = ['nullable', 'string', 'email', 'min:3', 'max:255', "unique:users,email,{$this->id},id"];
+            $rules['password'] = [
+                'nullable',
+                Password::min(8)
+                ->mixedCase()
+                ->letters()
+                ->numbers()
+                ->symbols()
+                ->uncompromised()
+            ];
         }
 
         return $rules;

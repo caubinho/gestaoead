@@ -15,7 +15,7 @@
 <div class="w-full mt-12">
     <div class="bg-white overflow-auto">
         <p class="text-xl pb-3 flex items-center">
-           @include('admin.layouts.__includes.form-search', ['routerName' => 'users.index'])
+           @include('admin.layouts.includes.form-search', ['routerName' => 'admin.index'])
         </p>
         <table class="min-w-full leading-normal">
             <thead>

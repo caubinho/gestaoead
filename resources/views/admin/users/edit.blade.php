@@ -15,7 +15,7 @@
                                 <form action="{{ route('users.update', $user->id)}}" method="POST"class="p-10 bg-white rounded">
                                     @method('PUT')
 
-                                    @include('admin.users.__partials.form')
+                                    @include('admin.users.partials.form')
                                 </form>
                             </div>
                         </div>

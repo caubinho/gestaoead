@@ -21,7 +21,7 @@ class CourseService
        return convertItemsOfArrayToObject($data);
     }
 
-    public function findById(string $id): object|null
+    public function findById(string $id)
     {
         return $this->repository->findById($id);
     }
@@ -31,7 +31,7 @@ class CourseService
         return $this->repository->create($data);
     }
 
-    public function update(string $id, array $data): object|null
+    public function update(string $id, array $data)
     {
         return $this->repository->update($id, $data);
     }

@@ -9,14 +9,27 @@ class Lesson extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'url',
-        'video',
-        'description'
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'id' => 'string',
     ];
 
-    public function modules()
+    /**
+     * Indicates if the model's ID is auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+
+    protected $fillable = [
+        'module_id', 'name', 'description', 'url', 'video'
+    ];
+
+    public function module()
     {
         return $this->belongsTo(Module::class);
     }
