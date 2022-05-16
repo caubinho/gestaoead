@@ -28,7 +28,7 @@ class UserStoreUpdate extends FormRequest
 
         $rules = [
             'name' => ['required', 'string', 'min:3', 'max:255'],
-            'email' => ['required', 'string', 'email', 'min:3', 'max:255', Rule::unique('users')->ignore($this->admin)],
+            'email' => ['required', 'string', 'email', 'min:3', 'max:255', Rule::unique('users')->ignore($this->id)],
             'password' =>[
                 'required',
                 Password::min(8)
