@@ -3,7 +3,10 @@
 namespace App\Repositories\Eloquent;
 
 use App\Models\Support as Model;
+use App\Repositories\PaginationInterface;
+use App\Repositories\Presenters\PaginationPresenter;
 use App\Repositories\SupportRepositoryInterface;
+use Illuminate\Validation\Rules\In;
 
 class SupportRepository implements SupportRepositoryInterface
 {
@@ -14,14 +17,19 @@ class SupportRepository implements SupportRepositoryInterface
         $this->model = $model;
     }
 
-    public function getByStatus(string $status): array
+    public function getByStatus(string $status, int $page): PaginationInterface
     {
+        //$limit = 15;
+        //$skip = ($page - 1) * $limit;
+
         $supports = $this->model
                         ->where('status', $status)
                         ->with(['user', 'lesson'])
-                        ->get();
+                        //->skip($skip)
+                        //->limit(15)
+                        ->paginate();
 
-        return $supports->toArray();
+        return new PaginationPresenter($supports);
     }
 
     public function findById(string $id): object|null

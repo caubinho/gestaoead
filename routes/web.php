@@ -13,7 +13,9 @@ use App\Http\Controllers\Admin\{
     SupportController,
 };
 
-Route::prefix('dashboard')->group(function () {
+Route::prefix('dashboard')
+    ->middleware(['auth'])
+    ->group(function () {
 
      /**
      * Reply Support
@@ -78,3 +80,5 @@ Route::prefix('dashboard')->group(function () {
 Route::get('/', function () {
     return view('welcome');
 });
+
+require __DIR__.'/auth.php';
