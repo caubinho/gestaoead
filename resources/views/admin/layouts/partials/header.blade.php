@@ -38,7 +38,7 @@
 
 
 
-        <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
+        <a href="{{ route('logout')}}" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
             <i class="fas fa-sign-out-alt mr-3"></i>
             Sair
         </a>
