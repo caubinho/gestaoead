@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->uuid('tenant_id')->index();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('image')->nullable();
@@ -23,6 +24,11 @@ return new class extends Migration
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('tenant_id')
+            ->references('id')
+            ->on('tenants')
+            ->onDelete('cascade');
         });
     }
 

@@ -60,4 +60,9 @@ class Admin extends Authenticatable
             get: fn ($value) => Carbon::make($value)->format('d/m/Y'),
         );
     }
+
+    public function tenant()
+    {
+        return $this->belongsTo(Tenant::class);
+    }
 }

@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\{
     SupportController,
 };
 
+Route::view('tenant.404', 'errors.404-tenant')->name('tenant.404');
+
 Route::prefix('dashboard')
     ->middleware(['auth'])
     ->group(function () {

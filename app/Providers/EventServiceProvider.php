@@ -15,11 +15,13 @@ use App\Models\{
     ReplySupport,
     User
 };
+use App\Models\Tenant\Tenant;
 use App\Observers\{
     AdminObserver,
     CourseObserver,
     LessonObserver,
     ReplySupportObserver,
+    TenantObserver,
     UserObserver
 };
 use Illuminate\Auth\Events\{
@@ -60,6 +62,7 @@ class EventServiceProvider extends ServiceProvider
         Course::observe(CourseObserver::class);
         Lesson::observe(LessonObserver::class);
         ReplySupport::observe(ReplySupportObserver::class);
+        Tenant::observe(TenantObserver::class);
     }
 
     /**

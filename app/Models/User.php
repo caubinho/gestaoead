@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Tenant\Tenant;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use App\Models\Traits\ImageTrait;
 use Carbon\Carbon;
@@ -22,6 +23,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'tenant_id',
         'name',
         'email',
         'password',
@@ -60,6 +62,11 @@ class User extends Authenticatable
         return Attribute::make(
             get: fn ($value) => Carbon::make($value)->format('d/m/Y'),
         );
+    }
+
+    public function tenant()
+    {
+        return $this->belongsTo(Tenant::class);
     }
 
 }
