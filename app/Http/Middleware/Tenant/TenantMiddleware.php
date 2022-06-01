@@ -19,7 +19,11 @@ class TenantMiddleware
     {
         $managerT = app(ManagerTenant::class);
 
-        dd($managerT->tenant());
+        $tenant = $managerT->tenant();
+
+        if(!$tenant && $request->url() !== route('tenant.404')){
+            return redirect()->route('tenant.404');
+        }
 
         return $next($request);
     }
