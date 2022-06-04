@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->uuid('id')->primary();
+
+            $table->uuid('tenant_id')->index();
+            $table->foreign('tenant_id')
+            ->references('id')
+            ->on('tenants')
+            ->onDelete('cascade');
+
             $table->string('name')->unique();
             $table->text('description')->nullable();
             $table->string('image')->nullable();

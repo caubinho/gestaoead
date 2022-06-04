@@ -4,14 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\Traits\ImageTrait;
+use App\Tenant\Traits\TenantTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
-    use HasFactory, ImageTrait;
+    use HasFactory, ImageTrait, TenantTrait;
 
     protected $fillable = [
         'name',
+        'tenant_id',
         'description',
         'image',
         'available'

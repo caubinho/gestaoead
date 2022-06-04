@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use App\Models\Traits\UuidTrait;
+use App\Tenant\Traits\TenantTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Module extends Model
 {
-    use HasFactory, UuidTrait;
+    use HasFactory, UuidTrait, TenantTrait;
 
     protected $fillable = [
         'course_id',

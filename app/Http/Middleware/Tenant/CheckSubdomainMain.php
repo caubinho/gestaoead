@@ -6,7 +6,7 @@ use App\Tenant\ManagerTenant;
 use Closure;
 use Illuminate\Http\Request;
 
-class TenantMiddleware
+class CheckSubdomainMain
 {
     /**
      * Handle an incoming request.
@@ -19,20 +19,11 @@ class TenantMiddleware
     {
         $managerT = app(ManagerTenant::class);
 
-        $tenant = $managerT->tenant();
+        if(!$managerT->isSubdomainMain()){
+            abort(401);
 
-        if(!$tenant && $request->url() !== route('tenant.404')){
-            return redirect()->route('tenant.404');
+            return;
         }
-
-        $this->setSession($tenant->only('name'));
-
         return $next($request);
-    }
-
-    public function setSession($tenant)
-    {
-        session()->put('tenant', $tenant);
-
     }
 }

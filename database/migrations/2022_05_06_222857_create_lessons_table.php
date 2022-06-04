@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->uuid('id')->primary();
+
+            $table->uuid('tenant_id')->index();
+            $table->foreign('tenant_id')
+            ->references('id')
+            ->on('tenants')
+            ->onDelete('cascade');
+
             $table->uuid('module_id')->index();
             $table->string('name')->unique();
             $table->string('url')->unique();

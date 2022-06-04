@@ -14,6 +14,8 @@ class Tenant extends Model
         'subdomain'
     ];
 
+
+
     public $incrementing = false;
 
     public function users()

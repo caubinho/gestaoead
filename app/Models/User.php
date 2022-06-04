@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Tenant\Tenant;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use App\Models\Traits\ImageTrait;
+use App\Tenant\Traits\TenantTrait;
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,7 +16,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, ImageTrait;
+    use HasApiTokens, HasFactory, Notifiable, ImageTrait, TenantTrait;
 
     /**
      * The attributes that are mass assignable.

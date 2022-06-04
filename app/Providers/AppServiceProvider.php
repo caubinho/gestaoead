@@ -23,8 +23,8 @@ use App\Repositories\{
     SupportRepositoryInterface,
     UserRepositoryInterface
 };
-
-
+use App\Tenant\ManagerTenant;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 
@@ -88,6 +88,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        /** Directives */
+        $managerT = app(ManagerTenant::class);
+
+        Blade::if('tenantmain', function () use ($managerT) {
+            return $managerT->isSubdomainMain();
+        });
+
+        Blade::if('tenant', function () use ($managerT) {
+            return !$managerT->isSubdomainMain();
+        });
     }
 }

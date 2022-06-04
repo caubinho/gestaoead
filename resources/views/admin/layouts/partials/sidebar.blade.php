@@ -1,6 +1,6 @@
 <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
     <div class="p-6">
-        <a href="{{ route('admin.home')}}" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">FS EAD</a>
+        <a href="{{ route('admin.home')}}" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">{{session('tenant')['name'] ?? config('app.name', 'FS EAD') }}</a>
     </div>
     <nav class="text-white text-base font-semibold pt-3">
 
