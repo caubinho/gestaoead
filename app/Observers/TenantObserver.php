@@ -2,8 +2,9 @@
 
 namespace App\Observers;
 
-use App\Models\Tenant\Tenant;
-use Illuminate\Support\Str;
+use App\Models\Tenant;
+use Webpatser\Uuid\Uuid;
+
 
 class TenantObserver
 {
@@ -15,7 +16,7 @@ class TenantObserver
      */
     public function creating(Tenant $tenant)
     {
-        $tenant->id = Str::uuid();
+        $tenant->id = Uuid::generate(4);
     }
 
 }

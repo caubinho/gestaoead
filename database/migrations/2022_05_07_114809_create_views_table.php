@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('views', function (Blueprint $table) {
-            $table->id();
-            $table->uuid('user_id');
-            $table->uuid('lesson_id');
+            $table->uuid('id')->primary();
+            $table->uuid('user_id')->index();
+            $table->uuid('lesson_id')->index();
             $table->integer('qty')->default(1);
             $table->timestamps();
 

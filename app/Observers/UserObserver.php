@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\Models\User;
-use Illuminate\Support\Str;
+use Webpatser\Uuid\Uuid;
 
 class UserObserver
 {
@@ -15,7 +15,7 @@ class UserObserver
      */
     public function creating(User $user)
     {
-        $user->id = Str::uuid();
+        $user->id = Uuid::generate(4);
     }
 
 

@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\Models\ReplySupport;
-use Illuminate\Support\Str;
+use Webpatser\Uuid\Uuid;
 
 class ReplySupportObserver
 {
@@ -17,6 +17,6 @@ class ReplySupportObserver
     {
         $reply->admin_id = auth()->user()->id;
        // $reply->user_id = '039198eb-0656-4898-9e52-5983d3404eb5'; // tmp
-        $reply->id = Str::uuid();
+        $reply->id = Uuid::generate(4);
     }
 }

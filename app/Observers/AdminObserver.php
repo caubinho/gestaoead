@@ -3,7 +3,8 @@
 namespace App\Observers;
 
 use App\Models\Admin;
-use Illuminate\Support\Str;
+use Webpatser\Uuid\Uuid;
+
 
 class AdminObserver
 {
@@ -15,7 +16,8 @@ class AdminObserver
      */
     public function creating(Admin $admin)
     {
-        $admin->id = Str::uuid();
+        $admin->id = Uuid::generate(4);
+
     }
 
 

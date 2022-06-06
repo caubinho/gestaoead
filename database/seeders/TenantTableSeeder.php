@@ -2,22 +2,22 @@
 
 namespace Database\Seeders;
 
+use App\Models\Tenant;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Prophecy\Call\Call;
 
-class DatabaseSeeder extends Seeder
+class TenantTableSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call([
-            TenantTableSeeder::class,
-            AdminTableSeeder::class
+        Tenant::create([
+            'name'  => 'Admin',
+            'subdomain' => 'master'
         ]);
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Course;
-use Illuminate\Support\Str;
+use Webpatser\Uuid\Uuid;
 
 class CourseObserver
 {
@@ -15,7 +15,7 @@ class CourseObserver
      */
     public function creating(Course $course)
     {
-        $course->id = Str::uuid();
+        $course->id = Uuid::generate(4);
     }
 
 

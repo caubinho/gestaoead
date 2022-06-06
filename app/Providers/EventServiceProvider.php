@@ -12,10 +12,12 @@ use App\Models\{
     Admin,
     Lesson,
     Course,
+    Tenant,
     ReplySupport,
-    User
+    User,
+
 };
-use App\Models\Tenant\Tenant;
+
 use App\Observers\{
     AdminObserver,
     CourseObserver,
@@ -24,6 +26,7 @@ use App\Observers\{
     TenantObserver,
     UserObserver
 };
+
 use Illuminate\Auth\Events\{
     Registered
 };
@@ -63,6 +66,7 @@ class EventServiceProvider extends ServiceProvider
         Lesson::observe(LessonObserver::class);
         ReplySupport::observe(ReplySupportObserver::class);
         Tenant::observe(TenantObserver::class);
+
     }
 
     /**

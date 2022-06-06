@@ -2,7 +2,7 @@
 
 namespace App\Tenant;
 
-use App\Models\Tenant\Tenant;
+use App\Models\Tenant;
 
 class ManagerTenant
 {

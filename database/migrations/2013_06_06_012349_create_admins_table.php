@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->uuid('id')->primary();
-
             $table->uuid('tenant_id')->index();
             $table->foreign('tenant_id')
             ->references('id')

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Tenant\Tenant;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use App\Models\Traits\ImageTrait;
 use App\Tenant\Traits\TenantTrait;

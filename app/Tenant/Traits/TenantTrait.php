@@ -2,7 +2,7 @@
 
 namespace App\Tenant\Traits;
 
-use App\Tenant\Observer\TenantObserver;
+use App\Tenant\Observers\TenantObserver;
 use App\Tenant\Scopes\TenantScope;
 
 trait TenantTrait
@@ -11,8 +11,8 @@ trait TenantTrait
     {
         parent::boot();
 
+        static::addGlobalScope(new TenantScope);
         static::observe(new TenantObserver);
 
-        static::addGlobalScope(new TenantScope);
     }
 }

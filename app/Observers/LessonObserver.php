@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use Illuminate\Support\Str;
+use Webpatser\Uuid\Uuid;
 use App\Models\Lesson;
 
 class LessonObserver
@@ -15,7 +16,7 @@ class LessonObserver
      */
     public function creating(Lesson $lesson)
     {
-        $lesson->id = Str::uuid();
+        $lesson->id = Uuid::generate(4);
         $lesson->url = Str::slug($lesson->name);
     }
 
