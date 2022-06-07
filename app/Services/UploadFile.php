@@ -9,12 +9,16 @@ class UploadFile
 {
     public function store(UploadedFile $file, string $path): string
     {
-        return $file->store($path);
+        $uuid = session('tenant')['id'];
+
+        return $file->store($uuid.'/'.$path);
     }
 
     public function storeAs(UploadedFile $file, string $path, string $customName): string
     {
-        return $file->storeAs($path, $customName);
+        $uuid = session('tenant')['id'];
+
+        return $file->storeAs($uuid.'/'.$path, $customName);
     }
 
     public function removeFile(string $filePath): bool

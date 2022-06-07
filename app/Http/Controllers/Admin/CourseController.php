@@ -47,6 +47,8 @@ class CourseController extends Controller
         $data = $request->only(['name', 'description']);
         $data['available'] = isset($request->available);
 
+
+
         if($request->image){
             $data['image'] = $uploadFile->store($request->image, 'courses');
         }

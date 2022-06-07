@@ -48,7 +48,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
 
             Route::prefix('tenant')
-                ->middleware(['web', 'subdomain_main'])
+                ->middleware(['web', 'auth', 'subdomain_main'])
                 ->namespace($this->namespace)
                 ->group(base_path('routes/tenant.php'));
         });

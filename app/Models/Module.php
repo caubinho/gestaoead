@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Module extends Model
 {
-    use HasFactory, UuidTrait, TenantTrait;
+    use HasFactory, TenantTrait;
 
     protected $fillable = [
         'course_id',

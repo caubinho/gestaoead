@@ -2,11 +2,10 @@
 
 namespace App\Http\Middleware\Tenant;
 
-use App\Tenant\ManagerTenant;
 use Closure;
 use Illuminate\Http\Request;
 
-class TenantMiddleware
+class TenantFilesystems
 {
     /**
      * Handle an incoming request.
@@ -17,26 +16,15 @@ class TenantMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $managerT = app(ManagerTenant::class);
-
-        $tenant = $managerT->tenant();
-
-        if(!$tenant && $request->url() !== route('tenant.404')){
-            return redirect()->route('tenant.404');
-        }else if ($tenant) {
-            $this->setSession($tenant->only([
-                'name', 'id'
-            ]));
-        }
+        $uuid = session('tenant')['id'];
 
 
+        config()->set([
+            'filesystems.disks.s3.url' => config('filesystems.disks.s3.url')."/{$uuid}",
+        ]);
+
+        //dd(config('filesystems.disks.s3'));
 
         return $next($request);
-    }
-
-    public function setSession($tenant)
-    {
-        session()->put('tenant', $tenant);
-
     }
 }

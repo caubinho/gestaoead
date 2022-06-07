@@ -12,6 +12,7 @@ use App\Models\{
     Admin,
     Lesson,
     Course,
+    Module,
     Tenant,
     ReplySupport,
     User,
@@ -22,6 +23,7 @@ use App\Observers\{
     AdminObserver,
     CourseObserver,
     LessonObserver,
+    ModuleObserver,
     ReplySupportObserver,
     TenantObserver,
     UserObserver
@@ -66,6 +68,7 @@ class EventServiceProvider extends ServiceProvider
         Lesson::observe(LessonObserver::class);
         ReplySupport::observe(ReplySupportObserver::class);
         Tenant::observe(TenantObserver::class);
+        Module::observe(ModuleObserver::class);
 
     }
 
