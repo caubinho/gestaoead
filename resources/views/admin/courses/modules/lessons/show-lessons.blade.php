@@ -13,7 +13,7 @@
             <form class="p-10 bg-white rounded shadow-xl" action="{{ route('lessons.destroy', [$module->id, $lesson->id]) }}" method="POST">
                 <ul>
                     <li><strong>Nome: </strong>{{ $lesson->name }}</li>
-                    <li><strong>URL: </strong>{{ $lesson->url }}</li>
+                    <li><strong>URL: </strong>{{ $lesson->slug }}</li>
                     <li><strong>Vídeo: </strong>{{ $lesson->video }}</li>
                     <li><strong>Descrição: </strong>{{ $lesson->description }}</li>
                 </ul>

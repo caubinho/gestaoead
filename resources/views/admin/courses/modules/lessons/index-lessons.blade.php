@@ -53,7 +53,7 @@
                     <td class="px-5 py-2 border-b border-gray-200 bg-white text-sm">
                         <div class="flex items-center">
                             <p class="text-gray-900 whitespace-no-wrap">
-                                {{ $lesson->url }}
+                                {{ $lesson->slug }}
                             </p>
                         </div>
                     </td>

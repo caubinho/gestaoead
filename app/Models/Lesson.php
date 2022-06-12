@@ -27,7 +27,7 @@ class Lesson extends Model
     public $incrementing = false;
 
     protected $fillable = [
-        'module_id', 'name', 'description', 'url', 'video'
+        'module_id', 'name', 'description', 'slug', 'video'
     ];
 
     public function module()

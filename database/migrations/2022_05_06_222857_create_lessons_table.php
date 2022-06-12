@@ -24,7 +24,7 @@ return new class extends Migration
 
             $table->uuid('module_id')->index();
             $table->string('name')->unique();
-            $table->string('url')->unique();
+            $table->string('slug')->unique();
             $table->string('video')->unique();
             $table->text('description')->nullable();
             $table->timestamps();

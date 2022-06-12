@@ -17,7 +17,7 @@ class LessonObserver
     public function creating(Lesson $lesson)
     {
         $lesson->id = Uuid::generate(4);
-        $lesson->url = Str::slug($lesson->name);
+        $lesson->slug = Str::slug($lesson->name);
     }
 
     /**
@@ -28,6 +28,6 @@ class LessonObserver
      */
     public function updating(Lesson $lesson)
     {
-        $lesson->url = Str::slug($lesson->name);
+        $lesson->slug = Str::slug($lesson->name);
     }
 }
